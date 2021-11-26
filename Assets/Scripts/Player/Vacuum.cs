@@ -8,8 +8,9 @@ public class Vacuum : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Food"))
+        if (other.TryGetComponent(out IMagnetically magnetically))
         {
+            magnetically.Magnetized();
             InhaleObj(other.transform);
         }
     }
