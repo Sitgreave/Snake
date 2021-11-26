@@ -54,11 +54,11 @@ public class FoodCell : Spawner <Food>
 
     private void RandomFoodDisable()
     {
-        int disableCount = Random.Range(0, (SpawnedObjList.Count+1) / 2);
+        int disableCount = Random.Range(0, Count / 2 + 1);
         for (int i = 0; i < disableCount; i++)
         {
             int randomFoodId = Random.Range(0, SpawnedObjList.Count);
-            Destroy(SpawnedObjList[randomFoodId]);
+            Destroy(SpawnedObjList[randomFoodId].gameObject);
         }
     }
 }

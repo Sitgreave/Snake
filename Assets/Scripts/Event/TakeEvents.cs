@@ -1,11 +1,11 @@
 using UnityEngine.Events;
-
-public class TakeEvents : UnityEngine.MonoBehaviour
+using UnityEngine;
+public class TakeEvents : MonoBehaviour
 {
 
-    private UnityEvent _onCrystalTaked;
-    private UnityEvent _onFoodTaked;
-    private UnityEvent _onTrapTaked; 
+   [SerializeField]  private UnityEvent _onCrystalTaked;
+   [SerializeField] private UnityEvent _onFoodTaked;
+   [SerializeField] private UnityEvent _onTrapTaked; 
     
 
     public static UnityEvent OnCrystalTaked;

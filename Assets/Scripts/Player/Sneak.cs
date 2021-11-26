@@ -3,18 +3,23 @@ using UnityEngine;
 public class Sneak : MonoBehaviour
 {
     private bool _hasFever = false;
+    [SerializeField] private MeshRenderer _meshRenderer;
     
-    private void EatObject<T>() where T : MonoBehaviour
+   public void SwitchColor()
     {
-
+       _meshRenderer.material.color = ColorSetter.GetColorFromStatus(StageColorType.Right);
     }
     public void FeverActive ()
     {
 
     }
-    private void TakeFood(Food food)
+    private void TakeFood()
     {
-        TakeEvents.OnFoodTaked.Invoke();
+        //TakeEvents.OnFoodTaked.Invoke();
+    }
+    private void EatObject<T>(T obj) where T : MonoBehaviour
+    {
+        Destroy(obj.gameObject);
     }
 
     private void TakeDamage()
@@ -28,18 +33,22 @@ public class Sneak : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "Food":
-                Food food = GetComponent<Food>();
-                if (food.MyColorType == StageColorType.Right)
+                Food food;
+                if (food = other.GetComponent<Food>())
                 {
-                    TakeFood(food);
-                }
-                else
-                {
-                    if (_hasFever) TakeFood(food);
+                    if (food.MyColorType == StageColorType.Right)
+                    {
+                        TakeFood();
+                    }
+                    else
+                    {
+                        if (_hasFever) TakeFood();
                         else TakeDamage();
+                    }
+                    EatObject(food);
                 }
-                break;
-
+                    break;
+                
             case "Trap": TakeDamage();  
                 TakeEvents.OnTrapTaked.Invoke(); 
                 break;

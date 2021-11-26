@@ -16,16 +16,18 @@ public class Vacuum : MonoBehaviour
     }
     public void InhaleObj(Transform objTransform)
     {
+        if(objTransform != null)
           StartCoroutine(LerpObj(objTransform));
     }
 
     
     IEnumerator LerpObj(Transform objTransform)
     {
-        while (objTransform.position.z > _mouth.position.z +.3f)
+        while (objTransform != null && objTransform.position.z > _mouth.position.z +.1f)
         {
             objTransform.position = Vector3.Lerp(objTransform.position, _mouth.position, 5f * Time.deltaTime) ;
             yield return new WaitForSeconds(.01f);
         }
+        
     }
 }
