@@ -7,7 +7,6 @@ public class Finish : MonoBehaviour
         if(other.tag == "Player")
         {
             StageEvents.OnStageCompleted.Invoke();
-            Debug.Log("A");
         }
     }
 }

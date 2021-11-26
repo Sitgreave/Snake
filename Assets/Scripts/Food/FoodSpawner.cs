@@ -13,7 +13,7 @@ public class FoodSpawner : Spawner <FoodCell>
         SpawnAll(_cellPrefab);
         _offsetZ = (_foodSegment.GetSegmentLength() - 2) / SpawnedObjList.Count;
        _offsetY = _cellPrefab.GetHeightOffset() + SpawnedObjList[0].transform.position.y;
-        _segmentWidth = _foodSegment.GetSegmentWidth();
+        _segmentWidth = _foodSegment.GetSegmentWidth() - 1;
         for (int i = 0; i < SpawnedObjList.Count; i++)
         {
             SpawnedObjList[i].transform.position = PositionWithOffsets(SpawnedObjList[i].transform.position);

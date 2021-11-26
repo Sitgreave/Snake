@@ -6,7 +6,7 @@ public class TouchInput : MonoBehaviour
     private int _screenWidth = Screen.width;
 
     
-        void FixedUpdate()
+        void Update()
         {
             float currentDirection = 0;
             if (Input.touchCount > 0)
@@ -14,7 +14,7 @@ public class TouchInput : MonoBehaviour
                 Touch touch = Input.GetTouch(0);
                 currentDirection = TouchInterpretation(touch.position.x);
             }
-            _movement.Move(currentDirection);
+            _movement.Direction = currentDirection;
         }
 
         private float TouchInterpretation(float touchPositionX)

@@ -15,7 +15,7 @@ public class FoodCell : Spawner <Food>
         SetColorType();
         for (int i = 0; i < SpawnedObjList.Count; i++)
         {
-            SpawnedObjList[i].SetColor(ColorSetter.GetColorFromStatus(_colorType));
+            SpawnedObjList[i].SetColor(ColorSetter.GetColorFromStatus(_colorType), _colorType);
         }
     }
     private void SetColorType()

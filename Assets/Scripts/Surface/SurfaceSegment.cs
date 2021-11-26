@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class SurfaceSegment : MonoBehaviour
 {
-    [SerializeField] private Transform _beginPosition;
-    [SerializeField] private Transform _endPosition;
+    [SerializeField] private BoxCollider _boxCollider;
+    [SerializeField] private Transform _transform;
+    public Transform MyTransform => _transform;
     private StageColorType _colorType;
     public StageColorType ColorType => _colorType;
     private Color _rightColor;
@@ -11,6 +12,14 @@ public class SurfaceSegment : MonoBehaviour
     private void Start()
     {
         StageEvents.OnSegmentSpawned.Invoke();
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            Destroy(gameObject, 5);
+        }
     }
     private void SetColorType()
     {
@@ -28,10 +37,11 @@ public class SurfaceSegment : MonoBehaviour
     }
     public float GetSegmentLength()
     {
-        return Mathf.Abs(_endPosition.position.z - _beginPosition.position.z);
+        float a = _boxCollider.size.z * transform.localScale.z ;
+        return a;
     }
     public float GetSegmentWidth()
     {
-        return Mathf.Abs (_endPosition.position.x - _beginPosition.position.x);
+        return Mathf.Abs (_boxCollider.size.x * transform.localScale.x);
     }
 }
