@@ -16,6 +16,7 @@ public class EatAnimation : MonoBehaviour
     public void StartDestroy()
     {
         _animator.SetBool("Destroy", true);
+        _animator.SetBool("Eat", false);
     }
 
     public void EndDestroy()

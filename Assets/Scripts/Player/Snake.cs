@@ -1,62 +1,45 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-    public class Snake : MonoBehaviour
+public class Snake : MonoBehaviour
+{
+    private bool _hasFever = false;
+    [SerializeField] private MeshRenderer _renderer;
+  
+    public delegate void Action();
+    private Queue<Action> _eatedObjects = new Queue<Action>();
+    public Queue<Action> EatedObjects => _eatedObjects;
+    public void SwitchColor()
     {
-        private bool _hasFever = false;
-        [SerializeField] private MeshRenderer _renderer;
-        public void SwitchColor()
+        _renderer.material.color = ColorSetter.GetColorFromStatus(StageColorType.Right);
+    }
+    public void FeverActive()
+    {
+
+    }
+    private void TakeFood()
+    {
+        TakeEvents.OnFoodTaked.Invoke();
+    }
+    private void EatObject(IEadible obj) 
+    {
+        _eatedObjects.Enqueue(obj.Digest);
+        TakeEvents.OnContacted.Invoke();
+    }
+
+    private void TakeDamage()
+    {
+        TakeEvents.OnTrapTaked.Invoke();
+    }
+
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent(out IEadible eadible))
         {
-            _renderer.material.color = ColorSetter.GetColorFromStatus(StageColorType.Right);
-        }
-        public void FeverActive()
-        {
-
-        }
-        private void TakeFood()
-        {
-            TakeEvents.OnFoodTaked.Invoke();
-        }
-        private void EatObject<T>(T obj) where T : MonoBehaviour
-        {
-            Destroy(obj.gameObject);
-        }
-
-        private void TakeDamage()
-        {
-            TakeEvents.OnTrapTaked.Invoke();
-        }
-
-
-
-        private void OnTriggerEnter(Collider other)
-        {
-            switch (other.gameObject.tag)
-            {
-                case "Food":
-                    Food food;
-                    if (food = other.GetComponent<Food>())
-                    {
-                        if (food.MyColorType == StageColorType.Right)
-                        {
-                            TakeFood();
-                        }
-                        else
-                        {
-                            if (_hasFever) TakeFood();
-                            else TakeDamage();
-                        }
-                        EatObject(food);
-                    }
-                    break;
-
-                case "Trap":
-                    TakeDamage();
-                    TakeEvents.OnTrapTaked.Invoke();
-                    break;
-
-                case "Crystal":
-                    TakeEvents.OnCrystalTaked.Invoke();
-                    break;
-            }
+           EatObject(eadible);
+           eadible.DisappearingInMouth();
         }
     }
+}

@@ -1,12 +1,25 @@
 using UnityEngine;
 
-public class Food : MonoBehaviour, IMagnetically
+public class Food : MonoBehaviour, IMagnetically, IEadible
 {
     [SerializeField] private MeshRenderer _meshRenderer;
     [SerializeField] private CapsuleCollider _collider;
     
     private StageColorType _myColorType;
     public StageColorType MyColorType => _myColorType;
+
+    public void Digest()
+    {
+        if (_myColorType == StageColorType.Right) TakeEvents.OnFoodTaked.Invoke();
+        else TakeEvents.OnTrapTaked.Invoke();
+    }
+
+    public void DisappearingInMouth()
+    {
+        Destroy(_meshRenderer);
+        Destroy(_collider);
+    }
+
     public float GetHeightOffset()
     {
         return (_collider.height * transform.localScale.y) / 2;

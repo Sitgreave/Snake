@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-    public class SnakeSegment : MonoBehaviour
+    public class ChainSegment : MonoBehaviour
     {
     [SerializeField] private Transform _transform;
     [SerializeField] private SphereCollider _collider;
@@ -49,9 +49,13 @@ using UnityEngine;
     {
         while (true)
         {
-            _pointsToMove.Enqueue(NextPoint());
-
+        _pointsToMove.Enqueue(NextPoint());
             yield return new WaitForFixedUpdate();
         }
+    }
+
+    private void OnDestroy()
+    {
+        StopCoroutine(PointsMark());
     }
 }

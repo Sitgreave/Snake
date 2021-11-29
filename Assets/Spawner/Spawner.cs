@@ -4,7 +4,8 @@ using UnityEngine;
 public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
 {
     protected T GetT;
-    protected List<T> SpawnedObjList = new List<T>();
+    private List<T> _spawnedObjList = new List<T>();
+    public List<T> SpawnedObjList => _spawnedObjList;
 
     [SerializeField] private Transform _parent;
     public Transform Parent => _parent;
