@@ -14,9 +14,9 @@ public class TakeEvents : MonoBehaviour
 
     private void Awake()
     {
-        _onCrystalTaked = OnCrystalTaked;
-        _onFoodTaked = OnFoodTaked;
-        _onTrapTaked = OnTrapTaked;
+        OnCrystalTaked = _onCrystalTaked;
+        OnFoodTaked =_onFoodTaked;
+        OnTrapTaked = _onTrapTaked;
     }
 
 }

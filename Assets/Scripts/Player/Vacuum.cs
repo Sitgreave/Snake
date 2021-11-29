@@ -2,32 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Vacuum : MonoBehaviour
+namespace My.CharacterScripts
 {
-    [SerializeField] private Transform _mouth;
+    public class Vacuum : MonoBehaviour
+    {
+        [SerializeField] private Transform _mouth;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent(out IMagnetically magnetically))
+        private void OnTriggerEnter(Collider other)
         {
-            magnetically.Magnetized();
-            InhaleObj(other.transform);
+            if (other.TryGetComponent(out IMagnetically magnetically))
+            {
+                magnetically.Magnetized();
+                InhaleObj(other.transform);
+            }
         }
-    }
-    public void InhaleObj(Transform objTransform)
-    {
-        if(objTransform != null)
-          StartCoroutine(LerpObj(objTransform));
-    }
+        public void InhaleObj(Transform objTransform)
+        {
+            if (objTransform != null)
+                StartCoroutine(LerpObj(objTransform));
+        }
 
-    
-    IEnumerator LerpObj(Transform objTransform)
-    {
-        while (objTransform != null && objTransform.position.z > _mouth.position.z +.1f)
+
+        IEnumerator LerpObj(Transform objTransform)
         {
-            objTransform.position = Vector3.Lerp(objTransform.position, _mouth.position, 5f * Time.deltaTime) ;
-            yield return new WaitForSeconds(.01f);
+            while (objTransform != null && objTransform.position.z > _mouth.position.z + .03f)
+            {
+                objTransform.position = Vector3.Lerp(objTransform.position, _mouth.position, 5f * Time.deltaTime);
+                yield return new WaitForSeconds(.01f);
+            }
+
         }
-        
     }
 }

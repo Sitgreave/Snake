@@ -4,8 +4,7 @@ public class TouchInput : MonoBehaviour
 {
     [SerializeField] private PhysicsMovement _movement;
     private int _screenWidth = Screen.width;
-
-    
+       
         void Update()
         {
             float currentDirection = 0;

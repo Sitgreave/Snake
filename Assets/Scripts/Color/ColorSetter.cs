@@ -8,6 +8,7 @@ public class ColorSetter : MonoBehaviour
     [SerializeField] private ColorDataBundle _dataBundle;
     private static int _rightColorId;
     private static int _wrongColorId;
+    private static int _lastRightId;
     private bool isInitialized = false;
 
     private void Start()
@@ -15,8 +16,10 @@ public class ColorSetter : MonoBehaviour
         if (!isInitialized)
         {
             Initialize();
+
         }
     }
+   
     private void Initialize()
     {
         for (int i = 0; i < _dataBundle.ColorsData.Length; i++)
@@ -33,6 +36,14 @@ public class ColorSetter : MonoBehaviour
             case StageColorType.Wrong: return _colors[_wrongColorId];
             default: return new Color(0, 0, 0);
         }
+    }
+    public static Color LastRightColor()
+    {
+        return _colors[_lastRightId];
+    }
+    public void WriteLastRightId()
+    {
+        _lastRightId = _rightColorId;
     }
     public void RandomizeColorsId()
     {
