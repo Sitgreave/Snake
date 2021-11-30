@@ -5,10 +5,8 @@ public class Snake : MonoBehaviour
 {
     private bool _hasFever = false;
     [SerializeField] private MeshRenderer _renderer;
-  
-    public delegate void Action();
-    private Queue<Action> _eatedObjects = new Queue<Action>();
-    public Queue<Action> EatedObjects => _eatedObjects;
+    [SerializeField] private Mouth _mouth;
+   
     public void SwitchColor()
     {
         _renderer.material.color = ColorSetter.GetColorFromStatus(StageColorType.Right);
@@ -17,29 +15,14 @@ public class Snake : MonoBehaviour
     {
 
     }
-    private void TakeFood()
-    {
-        TakeEvents.OnFoodTaked.Invoke();
-    }
-    private void EatObject(IEadible obj) 
-    {
-        _eatedObjects.Enqueue(obj.Digest);
-        TakeEvents.OnContacted.Invoke();
-    }
-
-    private void TakeDamage()
-    {
-        TakeEvents.OnTrapTaked.Invoke();
-    }
-
 
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out IEadible eadible))
         {
-           EatObject(eadible);
-           eadible.DisappearingInMouth();
+           _mouth.EatObject(eadible);
+            Destroy(other.gameObject);
         }
     }
 }

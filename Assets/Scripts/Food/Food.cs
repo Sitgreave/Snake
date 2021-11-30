@@ -8,17 +8,12 @@ public class Food : MonoBehaviour, IMagnetically, IEadible
     private StageColorType _myColorType;
     public StageColorType MyColorType => _myColorType;
 
-    public void Digest()
+    public void DigestResult()
     {
         if (_myColorType == StageColorType.Right) TakeEvents.OnFoodTaked.Invoke();
         else TakeEvents.OnTrapTaked.Invoke();
     }
 
-    public void DisappearingInMouth()
-    {
-        Destroy(_meshRenderer);
-        Destroy(_collider);
-    }
 
     public float GetHeightOffset()
     {

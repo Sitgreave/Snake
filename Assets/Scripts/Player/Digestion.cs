@@ -5,11 +5,11 @@ using UnityEngine;
 public class Digestion : MonoBehaviour
 {
     [SerializeField] private ChainSpawner _chain;
-    [SerializeField] private Snake _snake;
+    [SerializeField] private Mouth _mouth;
 
     public void DigestFood()
     {
-        _snake.EatedObjects.Dequeue().Invoke();
+        _mouth.ChewedObjects.Dequeue().Invoke();
 
     }
     public void Eat()

@@ -817,18 +817,6 @@ MonoBehaviour:
   _onFoodTaked:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1397053841}
-        m_TargetAssemblyTypeName: SoundSystem, Assembly-CSharp
-        m_MethodName: PlayEatSound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 55604498}
         m_TargetAssemblyTypeName: ChainSpawner, Assembly-CSharp
         m_MethodName: CreateSegment
@@ -859,9 +847,9 @@ MonoBehaviour:
   _onEated:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1397053841}
-        m_TargetAssemblyTypeName: SoundSystem, Assembly-CSharp
-        m_MethodName: PlayEatSound
+      - m_Target: {fileID: 1410394907}
+        m_TargetAssemblyTypeName: Digestion, Assembly-CSharp
+        m_MethodName: DigestFood
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -877,6 +865,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1410394907}
         m_TargetAssemblyTypeName: Digestion, Assembly-CSharp
         m_MethodName: Eat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1397053841}
+        m_TargetAssemblyTypeName: SoundSystem, Assembly-CSharp
+        m_MethodName: PlayEatSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1350,6 +1350,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1410394906}
   - component: {fileID: 1410394907}
+  - component: {fileID: 1410394908}
   m_Layer: 0
   m_Name: Snake
   m_TagString: Untagged
@@ -1386,7 +1387,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _chain: {fileID: 55604498}
-  _snake: {fileID: 1422478554}
+  _mouth: {fileID: 1410394908}
+--- !u!114 &1410394908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410394905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d40c6ab72ff03444ca3f0aa6ab035124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1422478551
 GameObject:
   m_ObjectHideFlags: 0
@@ -1455,6 +1468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 1422478557}
+  _mouth: {fileID: 1410394908}
 --- !u!114 &1422478555
 MonoBehaviour:
   m_ObjectHideFlags: 0
