@@ -12,6 +12,7 @@ public class SegmentAnimations : MonoBehaviour
     public void Eat()
     {
         _animator.SetBool("Eat", true);
+        Invoke("StopEat", .01f);
     }
     public void StartDestroy()
     {

@@ -24,6 +24,6 @@ public class Snake : MonoBehaviour
     private void OnDestroy()
     {
         GameEvents.OnLevelLosed.Invoke();
-        Time.timeScale = 0;
     }
+
 }

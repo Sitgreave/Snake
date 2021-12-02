@@ -61,4 +61,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cell: {fileID: 4864708598298797811}
-  _radius: 0.3
+  _radius: 0.4

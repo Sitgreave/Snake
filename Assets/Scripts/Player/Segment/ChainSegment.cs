@@ -49,8 +49,11 @@ using UnityEngine;
     {
         while (true)
         {
-        _pointsToMove.Enqueue(NextPoint());
-            yield return new WaitForFixedUpdate();
+            if (_nextSegment != null)
+            {
+                _pointsToMove.Enqueue(NextPoint());
+                yield return new WaitForFixedUpdate();
+            }
         }
     }
 

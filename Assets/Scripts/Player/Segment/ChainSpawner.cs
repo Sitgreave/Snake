@@ -39,7 +39,7 @@ public class ChainSpawner : Spawner<ChainSegment>
                     Destroy(SpawnedObjList[_lastSegmentId]);
                     SpawnedObjList.RemoveAt(_lastSegmentId);
                 }
-                else if (SpawnedObjList.Count == 0)
+                else if (SpawnedObjList.Count == 0 && _head != null)
                 {
                     Destroy(_head.gameObject);
                     break;
