@@ -292,6 +292,7 @@ GameObject:
   - component: {fileID: 8068863666291329588}
   - component: {fileID: 8068863666291329589}
   - component: {fileID: 2531232560420919156}
+  - component: {fileID: 4796855786536134242}
   m_Layer: 0
   m_Name: FinishStage
   m_TagString: Surface
@@ -391,3 +392,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _boxCollider: {fileID: 8068863666291329589}
   _transform: {fileID: 8068863666291329590}
+  _measurer: {fileID: 4796855786536134242}
+--- !u!114 &4796855786536134242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8068863666291329578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c73c757ecef3b144ba2ba9a756a88cf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colliderSurface: {fileID: 8068863666291329589}

@@ -1,9 +1,15 @@
+using UnityEngine;
 using UnityEngine.Events;
 
-public class GameEvents : UnityEngine.MonoBehaviour
+public class GameEvents : MonoBehaviour
 {
-    public UnityEvent OnLevelLosed;
+    public static UnityEvent OnLevelLosed;
+   [SerializeField] private UnityEvent _onLevelLosed;
     public UnityEvent OnLevelWon;
 
-    
+    private void Start()
+    {
+        OnLevelLosed = _onLevelLosed;
+    }
+
 }

@@ -25,7 +25,7 @@ namespace My.CharacterScripts
 
         IEnumerator LerpObj(Transform objTransform)
         {
-            while (objTransform != null && objTransform.position.z > _mouth.position.z + .03f)
+            while (objTransform != null && objTransform.position.z > _mouth.position.z + .01f)
             {
                 objTransform.position = Vector3.Lerp(objTransform.position, _mouth.position, 5f * Time.deltaTime);
                 yield return new WaitForSeconds(.01f);

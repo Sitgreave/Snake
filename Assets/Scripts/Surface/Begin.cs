@@ -8,7 +8,7 @@ public class Begin : MonoBehaviour
 
     private void Start()
     {
-       Color color= ColorSetter.LastRightColor();
+       Color color= ColorSetter.GetColorFromStatus(StageColorType.Right);
         _renderer.material.color = new Color(color.r, color.g, color.b, .5f);
     }
     private void OnTriggerEnter(Collider other)

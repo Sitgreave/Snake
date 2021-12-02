@@ -1,19 +1,14 @@
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class Snake : MonoBehaviour
 {
-    private bool _hasFever = false;
     [SerializeField] private MeshRenderer _renderer;
     [SerializeField] private Mouth _mouth;
-   
+    
     public void SwitchColor()
     {
         _renderer.material.color = ColorSetter.GetColorFromStatus(StageColorType.Right);
-    }
-    public void FeverActive()
-    {
-
     }
 
 
@@ -24,5 +19,11 @@ public class Snake : MonoBehaviour
            _mouth.EatObject(eadible);
             Destroy(other.gameObject);
         }
+    }
+
+    private void OnDestroy()
+    {
+        GameEvents.OnLevelLosed.Invoke();
+        Time.timeScale = 0;
     }
 }

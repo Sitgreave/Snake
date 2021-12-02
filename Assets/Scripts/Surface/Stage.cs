@@ -4,9 +4,8 @@ using UnityEngine;
 public class Stage : Spawner<SurfaceSegment>
 {
     [SerializeField] private List<SurfaceSegment> _surfaceSegmentPrefabs = new List<SurfaceSegment>();
-    [SerializeField] private SurfaceSegment _stageFinishPrefab;
     [SerializeField] private SurfaceSegment _stageBeginPrefab;
-    [SerializeField] private Spreader _spreader;
+   [SerializeField] private Spreader _spreader;
     private int _currentLastId;
     private int _lastDestroyedId = 0;
     private const int _maxStageOnScene = 9;

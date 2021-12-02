@@ -4,23 +4,26 @@ public class TakeEvents : MonoBehaviour
 {
 
    [SerializeField]  private UnityEvent _onCrystalTaked;
-   [SerializeField] private UnityEvent _onFoodTaked;
-   [SerializeField] private UnityEvent _onTrapTaked;
+   [SerializeField] private UnityEvent _onGoodFoodDigested;
+   [SerializeField] private UnityEvent _onBadFoodDigested;
+   [SerializeField] private UnityEvent _onBombDigested;
    [SerializeField] private UnityEvent _onEated;
    [SerializeField] private UnityEvent _onContacted;
     public static UnityEvent OnEated;
     public static UnityEvent OnCrystalTaked;
-    public static UnityEvent OnFoodTaked;
-    public static UnityEvent OnTrapTaked;
+    public static UnityEvent OnGoodFoodDigested;
+    public static UnityEvent OnBadFoodDigested;
     public static UnityEvent OnContacted;
+    public static UnityEvent OnBombDigested;
 
     private void Awake()
     {
         OnEated = _onEated;
         OnCrystalTaked = _onCrystalTaked;
-        OnFoodTaked =_onFoodTaked;
-        OnTrapTaked = _onTrapTaked;
+        OnGoodFoodDigested = _onGoodFoodDigested;
+        OnBadFoodDigested = _onBadFoodDigested;
         OnContacted = _onContacted;
+        OnBombDigested = _onBombDigested;
     }
 
 }

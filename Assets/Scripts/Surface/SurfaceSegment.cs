@@ -4,6 +4,9 @@ public class SurfaceSegment : MonoBehaviour
 {
     [SerializeField] private BoxCollider _boxCollider;
     [SerializeField] private Transform _transform;
+    [SerializeField] private Measurer _measurer;
+    public Measurer Measurer => _measurer;
+
     private bool _playerExit;
     public Transform MyTransform => _transform;
     private StageColorType _colorType;
@@ -39,13 +42,5 @@ public class SurfaceSegment : MonoBehaviour
     }
 
 
-    public float GetSegmentLength()
-    {
-        float a = _boxCollider.size.z * transform.localScale.z ;
-        return a;
-    }
-    public float GetSegmentWidth()
-    {
-        return Mathf.Abs (_boxCollider.size.x * transform.localScale.x);
-    }
+
 }

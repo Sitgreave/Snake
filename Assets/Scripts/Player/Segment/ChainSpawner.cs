@@ -4,42 +4,48 @@ using UnityEngine;
 
 public class ChainSpawner : Spawner<ChainSegment>
 {
-    [SerializeField] private ChainSegment _prefab;
     [SerializeField] private Transform _head;
+    [SerializeField] private Fever _fever;
     private int _lastSegmentId => SpawnedObjList.Count - 1;
-    
+    public int CurrentCount => _lastSegmentId;
+    public float FeverTime => _fever.Time;
 
-   
-
-    private void Update()
-    {
-        //if (Input.GetKeyUp(KeyCode.D)) AddSegment();
-        if (Input.GetKeyUp(KeyCode.A)) DeleteSegment();
-    }
-
-
-    public void CreateSegment()
+   [SerializeField] private void CreateSegment()
     {
         if (_lastSegmentId < Count)
         {
-            SpawnSingle(_prefab);
+            SpawnSingle();
             if (_lastSegmentId == 0)
             {
                 SpawnedObjList[0]._nextSegment = _head;
             }
             else SpawnedObjList[_lastSegmentId]._nextSegment = SpawnedObjList[_lastSegmentId - 1].transform;
-            SnakeEvents.OnNewSegmentSpawned.Invoke();
+          
+            SnakeEvents.OnSegmentCountChanged.Invoke();
         }
+        else DeleteSegment(3);
+        
     }
- 
-    public void DeleteSegment()
+
+  [SerializeField] private void DeleteSegment(int count)
     {
-        if(SpawnedObjList.Count > 0)
+        if (!_fever.HasFever)
         {
-            SpawnedObjList[_lastSegmentId].EatAnimation.StartDestroy();
-            Destroy(SpawnedObjList[_lastSegmentId]);
-            SpawnedObjList.RemoveAt(_lastSegmentId);
-            SnakeEvents.OnSegmentDestroyed.Invoke();
+            for (int i = 0; i < count; i++)
+            {
+                if (SpawnedObjList.Count > 0)
+                {
+                    SpawnedObjList[_lastSegmentId].EatAnimation.StartDestroy();
+                    Destroy(SpawnedObjList[_lastSegmentId]);
+                    SpawnedObjList.RemoveAt(_lastSegmentId);
+                }
+                else if (SpawnedObjList.Count == 0)
+                {
+                    Destroy(_head.gameObject);
+                    break;
+                }
+            }
         }
+        SnakeEvents.OnSegmentCountChanged.Invoke();
     }
 }

@@ -9772,7 +9772,7 @@ GameObject:
   - component: {fileID: 8675751016571791149}
   - component: {fileID: 8255122465849147685}
   - component: {fileID: 1811664103355210317}
-  - component: {fileID: 3135395876426467873}
+  - component: {fileID: 6141373681449311428}
   m_Layer: 0
   m_Name: Begin
   m_TagString: Begin
@@ -9788,8 +9788,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4939118970950523671}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0002, y: 0.7073, z: 0.09}
-  m_LocalScale: {x: 1.0445446, y: 0.4453, z: 0.2}
+  m_LocalPosition: {x: 0, y: 0.5543, z: 0.09}
+  m_LocalScale: {x: 0.8964933, y: 0.13928984, z: 0.2}
   m_Children: []
   m_Father: {fileID: 8068863666291329590}
   m_RootOrder: 0
@@ -9810,12 +9810,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4939118970950523671}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 0
+  m_MotionVectors: 2
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
@@ -9857,7 +9857,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _particle: {fileID: 4649017441734334286}
   _renderer: {fileID: 8255122465849147685}
---- !u!65 &3135395876426467873
+--- !u!65 &6141373681449311428
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9868,8 +9868,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 6.1232336e-17}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 6.123234e-17}
+  m_Center: {x: 0, y: 0, z: 0.000000029802322}
 --- !u!1 &8068863664442360859
 GameObject:
   m_ObjectHideFlags: 0
@@ -10073,6 +10073,7 @@ GameObject:
   - component: {fileID: 8068863666291329588}
   - component: {fileID: 8068863666291329589}
   - component: {fileID: 2531232560420919156}
+  - component: {fileID: 6836962412918825310}
   m_Layer: 0
   m_Name: BeginStage
   m_TagString: Surface
@@ -10089,7 +10090,7 @@ Transform:
   m_GameObject: {fileID: 8068863666291329578}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 1, z: 7.5}
+  m_LocalScale: {x: 3, y: 1, z: 12}
   m_Children:
   - {fileID: 199777961661417674}
   - {fileID: 2343326762717201626}
@@ -10173,3 +10174,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _boxCollider: {fileID: 8068863666291329589}
   _transform: {fileID: 8068863666291329590}
+  _measurer: {fileID: 6836962412918825310}
+--- !u!114 &6836962412918825310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8068863666291329578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c73c757ecef3b144ba2ba9a756a88cf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colliderSurface: {fileID: 8068863666291329589}
