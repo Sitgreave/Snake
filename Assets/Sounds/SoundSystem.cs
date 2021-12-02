@@ -8,12 +8,18 @@ public class SoundSystem : MonoBehaviour
     [SerializeField] private AudioClip _newColorSound;
     [SerializeField] private AudioClip _bubleSound;
     [SerializeField] private AudioClip _badBubleSound;
+    [SerializeField] private AudioClip _bombExplosionSound;
     [SerializeField] private AudioSource _source;
 
 
     private void Start()
     {
         StartCoroutine(Pitcher());
+    }
+
+    public void PlayExplosionSound()
+    {
+        PlayClip(_bombExplosionSound);
     }
     public void PlayEatSound()
     {

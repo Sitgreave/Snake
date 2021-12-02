@@ -21,3 +21,15 @@ MonoBehaviour:
     _color: {r: 0.06729946, g: 0.04133137, b: 0.8113208, a: 0}
   - _name: Cyan
     _color: {r: 0.11406189, g: 0.8396226, b: 0.8180679, a: 0}
+  - _name: Yelow
+    _color: {r: 1, g: 0.82617885, b: 0, a: 0}
+  - _name: Brown
+    _color: {r: 0.4528302, g: 0.13298903, b: 0, a: 0}
+  - _name: White
+    _color: {r: 1, g: 1, b: 1, a: 0}
+  - _name: Dark Violet
+    _color: {r: 0.38047367, g: 0, b: 0.38679248, a: 0}
+  - _name: Pink
+    _color: {r: 1, g: 0.39999998, b: 0.9776497, a: 0}
+  - _name: Black
+    _color: {r: 0, g: 0, b: 0, a: 0}

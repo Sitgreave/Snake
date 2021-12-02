@@ -9,7 +9,7 @@ using UnityEngine;
     [HideInInspector] public Transform _nextSegment;
     [SerializeField] private MeshRenderer _renderer;
     float _diameter;
-    public EatAnimation EatAnimation;
+    public SegmentAnimations EatAnimation;
     private Queue<Vector3> _pointsToMove = new Queue<Vector3>();
     private void Awake()
     {

@@ -23,6 +23,7 @@ public class Stage : Spawner<SurfaceSegment>
         SpawnAll(_surfaceSegmentPrefabs);
         _spreader.SpreadSurfaces(SpawnedObjList, _currentLastId);
         _currentLastId = SpawnedObjList.Count - 1;
+       // StageEvents.OnStageCompleted.Invoke();
     }
 
     public void DestroyOldStages()

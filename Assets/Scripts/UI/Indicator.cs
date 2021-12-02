@@ -15,12 +15,13 @@ public class Indicator : MonoBehaviour
     private void Start()
     {
         _defaultColor = _barImage.color;
+        SetDefaultColor();
         UpdateBar();
     }
     public void UpdateBar()
     {
-        float currentValue = _spawner.CurrentCount + 1;
-        float maxValue = _spawner.Count + 1;
+        float currentValue = _spawner.CurrentCount + 2;
+        float maxValue = _spawner.Count + 2;
         _healthBar.value = currentValue / maxValue;
         _healthCountText.text = currentValue.ToString() + "\\" + maxValue.ToString();
     }

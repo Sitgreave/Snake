@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: a304e471e7156ea4dbb97abd7f7d6a71, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GetT: {fileID: 79136501445977692, guid: 583a469bf619d2b48bc54ec66501b475, type: 3}
   _parent: {fileID: 55604496}
-  _count: 15
+  _count: 12
   _head: {fileID: 1422478559}
   _fever: {fileID: 1410394910}
 --- !u!1 &211571575
@@ -462,6 +462,7 @@ MonoBehaviour:
   _coinsText: {fileID: 1328278491}
   _streakText: {fileID: 2110181186}
   _wallet: {fileID: 963194234}
+  _moveTextPrefab: {fileID: 5558840041302136465, guid: dbb3969adef73394b8282cea4a9fb15c, type: 3}
 --- !u!114 &371703444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -477,7 +478,7 @@ MonoBehaviour:
   _healthBar: {fileID: 632826400}
   _spawner: {fileID: 55604498}
   _barImage: {fileID: 728647926}
-  _iconImage: {fileID: 0}
+  _iconImage: {fileID: 1650740691}
   _healthCountText: {fileID: 439003130}
 --- !u!114 &371703445
 MonoBehaviour:
@@ -737,7 +738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: -0.02, y: 4.66, z: -6.8899994}
+  m_FollowOffset: {x: -0.1, y: 2.85, z: -4.76}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 0
@@ -1275,8 +1276,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.28843454, y: -0.0091768075, z: 0.0027645347, w: 0.95745164}
-  m_LocalPosition: {x: -0.02, y: 5.41, z: -11.73}
+  m_LocalRotation: {x: 0.2530557, y: -0.0020489073, z: 0.0005359324, w: 0.9674494}
+  m_LocalPosition: {x: -0.1, y: 3.6, z: -9.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1343,7 +1344,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1422478554}
         m_TargetAssemblyTypeName: Snake, Assembly-CSharp
         m_MethodName: SwitchColor
         m_Mode: 1
@@ -1367,9 +1368,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _onSegmentSpawned:
-    m_PersistentCalls:
-      m_Calls:
       - m_Target: {fileID: 1339038755}
         m_TargetAssemblyTypeName: ColorSetter, Assembly-CSharp
         m_MethodName: RandomizeColorsId
@@ -1382,6 +1380,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _onSegmentSpawned:
+    m_PersistentCalls:
+      m_Calls: []
   _onSnakeColorSwitched:
     m_PersistentCalls:
       m_Calls:
@@ -1691,6 +1692,7 @@ MonoBehaviour:
   _newColorSound: {fileID: 8300000, guid: a1cf9b20ffa890e48a67e800f4ff1a9a, type: 3}
   _bubleSound: {fileID: 8300000, guid: 9198d341487b4ec498b2b0fad28c3c63, type: 3}
   _badBubleSound: {fileID: 8300000, guid: 10b21da10dc82234f96148a426788f44, type: 3}
+  _bombExplosionSound: {fileID: 8300000, guid: 848d4dc3725eff847b26657531990291, type: 3}
   _source: {fileID: 1397053842}
 --- !u!82 &1397053842
 AudioSource:
@@ -1817,7 +1819,7 @@ GameObject:
   - component: {fileID: 1410394909}
   m_Layer: 0
   m_Name: Snake
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2238,6 +2240,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1397053841}
+        m_TargetAssemblyTypeName: SoundSystem, Assembly-CSharp
+        m_MethodName: PlayExplosionSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _onEated:
     m_PersistentCalls:
       m_Calls:
@@ -2490,8 +2504,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1747704494}
-  m_LocalRotation: {x: 0.28843454, y: -0.0091768075, z: 0.0027645347, w: 0.95745164}
-  m_LocalPosition: {x: -0.02, y: 5.41, z: -11.73}
+  m_LocalRotation: {x: 0.2530557, y: -0.0020489073, z: 0.0005359324, w: 0.9674494}
+  m_LocalPosition: {x: -0.1, y: 3.6, z: -9.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 533427825}
@@ -3096,7 +3110,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -61.454712, y: -10.080811}
+  m_AnchoredPosition: {x: -61.454834, y: -10.080811}
   m_SizeDelta: {x: 269.69, y: 189.57988}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4903230424543776144

@@ -11,15 +11,15 @@ public class ColorSetter : MonoBehaviour
     private static int _lastRightId;
     private bool isInitialized = false;
 
-    private void Start()
+    private void Awake()
     {
         if (!isInitialized)
         {
             Initialize();
-
+            RandomizeColorsId();
         }
     }
-   
+  
     private void Initialize()
     {
         for (int i = 0; i < _dataBundle.ColorsData.Length; i++)
@@ -49,15 +49,32 @@ public class ColorSetter : MonoBehaviour
     {
         if (isInitialized)
         {
-            _rightColorId = Random.Range(0, _dataBundle.ColorsData.Length);
+            WriteLastRightId();
+            int temp;
             while (true)
             {
-                int temp = Random.Range(0, _dataBundle.ColorsData.Length);
+                int j = 0;
+
+                temp = Random.Range(0, _dataBundle.ColorsData.Length);
+                if (temp != _lastRightId)
+                {
+                    _rightColorId = temp;
+                    break;
+                }
+                j++;
+                if (j == 100) break;
+            }
+            while (true)
+            {
+                int j = 0;
+                temp = Random.Range(0, _dataBundle.ColorsData.Length);
                 if (temp != _rightColorId)
                 {
                     _wrongColorId = temp;
                     break;
                 }
+                j++;
+                if (j == 100) break;
             }
         }
     }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FoodSpawner : Spawner <FoodCell>
+public class CellSpawner : Spawner <FoodCell>
 {
 
     [SerializeField] private SurfaceSegment _surface;
@@ -12,7 +12,7 @@ public class FoodSpawner : Spawner <FoodCell>
     {
         SpawnAll();
         SetOffsets();
-       Invoke(nameof(GetNewPositions), .01f);
+       Invoke(nameof(GetNewPositions), .05f);
     }
 
     private void GetNewPositions()

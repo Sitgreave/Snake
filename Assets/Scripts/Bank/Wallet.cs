@@ -14,12 +14,16 @@ public class Wallet : MonoBehaviour
     public delegate void WalletHandler();
     public event WalletHandler OnCoinsChanged;
     public event WalletHandler OnCrystalsChanged;
-
+    private int _increaseValueCoins;
+    private int _increaseValueCrystal;
+    public int IncreaseValueCoins => _increaseValueCoins;
+    public int IncreaseValueCrystal => _increaseValueCrystal;
     public void AddCoins(int count)
     {
         if(count > 0)
         {
             _coins += count;
+            _increaseValueCoins = count;
             OnCoinsChanged.Invoke();
         }
     }
@@ -31,13 +35,13 @@ public class Wallet : MonoBehaviour
             if (_crystal < 2)
             {
                 _crystal += count;
-
             }
             else
             {
                 _crystal = 0;
                 SnakeEvents.OnFeverActivated.Invoke();
             }
+            _increaseValueCrystal = count;
             OnCrystalsChanged.Invoke();
         }
     }

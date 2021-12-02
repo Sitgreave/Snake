@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EatAnimation : MonoBehaviour
+public class SegmentAnimations : MonoBehaviour
 {
     public Animator _animator;
 
